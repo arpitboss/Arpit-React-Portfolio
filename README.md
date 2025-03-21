@@ -1,4 +1,4 @@
-# Developer Portfolio
+# AV Portfolio
 
 ## 🚀 Overview
 
@@ -146,8 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 ## 📱 Contact
 
 - Email: workother001@gmail.com
-- LinkedIn: [linkedin.com/in/yourusername](https://www.linkedin.com/in/arpit-verma-545819226/)
-- GitHub: [github.com/yourusername](https://github.com/arpitboss)
+- LinkedIn: [https://www.linkedin.com/in/arpit-verma-545819226/](https://www.linkedin.com/in/arpit-verma-545819226/)
+- GitHub: [https://github.com/arpitboss](https://github.com/arpitboss)
 
 ## 📄 License
 
