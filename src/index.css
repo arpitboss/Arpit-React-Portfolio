@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-light dark:bg-dark text-dark dark:text-white transition-colors duration-300;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold;
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+  }
+
+  code, pre {
+    font-family: 'Fira Code', monospace;
+    font-feature-settings: "liga" on;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  li {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .code-highlight {
+    @apply bg-gray-800 text-green-400 font-mono p-1 rounded;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  }
+  
+  .terminal-text {
+    @apply font-mono text-green-400 bg-black p-4 rounded;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }
+
+  .container {
+    @apply max-w-[1200px] mx-auto px-4;
+  }
+
+  .btn {
+    @apply px-6 py-2 rounded-md font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary-light dark:bg-primary-dark text-white hover:bg-blue-600 dark:hover:bg-blue-500;
+  }
+
+  .btn-outline {
+    @apply border border-primary-light dark:border-primary-dark text-primary-light dark:text-primary-dark hover:bg-primary-light dark:hover:bg-primary-dark hover:text-white;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold mb-8 text-center font-display relative inline-block;
+  }
+
+  .section-title::after {
+    @apply content-[''] absolute h-1 w-16 bg-primary-light dark:bg-primary-dark rounded-full bottom-0 left-1/2 -translate-x-1/2 -mb-2;
+  }
+
+  .custom-cursor {
+    @apply fixed w-6 h-6 rounded-full border-2 border-primary-light dark:border-primary-dark pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 mix-blend-difference;
+  }
+
+  .custom-cursor-dot {
+    @apply fixed w-2 h-2 rounded-full bg-primary-light dark:bg-primary-dark pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+.animate-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, cursor 1s step-end infinite;
+}
+
+.dark .animate-typewriter {
+  border-right-color: #fff;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-light-300 dark:bg-dark-700;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-light dark:bg-primary-dark rounded-full;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+  color: red;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
