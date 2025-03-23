@@ -1,73 +1,90 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastActivityRef = useRef(Date.now());
+  const rafRef = useRef(null);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
       setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+      lastActivityRef.current = Date.now();
+      setIsVisible(true);
 
-    const handlePointerDetection = () => {
-      const hoveredElement = document.querySelectorAll(':hover');
-      const isHoveringClickable = Array.from(hoveredElement).some(el => {
-        const cursor = window.getComputedStyle(el).cursor;
-        return cursor === 'pointer' || el.tagName === 'BUTTON' || el.tagName === 'A';
+      rafRef.current = requestAnimationFrame(() => {
+        const hoveredElement = document.elementFromPoint(e.clientX, e.clientY);
+        if (hoveredElement) {
+          const computedStyle = window.getComputedStyle(hoveredElement);
+          const isHoveringClickable =
+            computedStyle.cursor === 'pointer' ||
+            hoveredElement.tagName === 'BUTTON' ||
+            hoveredElement.tagName === 'A';
+
+          setIsPointer(isHoveringClickable);
+        }
       });
-
-      setIsPointer(isHoveringClickable);
     };
 
-    window.addEventListener('mousemove', (e) => {
-      handleMouseMove(e);
-      handlePointerDetection();
-    });
+    const handleClick = () => {
+      setIsVisible(true);
+      lastActivityRef.current = Date.now();
+    };
+
+    const inactivityTimer = setInterval(() => {
+      if (Date.now() - lastActivityRef.current > 2000) {
+        setIsVisible(false);
+      }
+    }, 500);
+
+    document.body.style.cursor = 'none';
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('click', handleClick);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleClick);
+      clearInterval(inactivityTimer);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+      document.body.style.cursor = 'auto';
     };
   }, []);
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 w-6 h-6 rounded-full border-2 z-50 pointer-events-none mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 12,
-          y: mousePosition.y - 12,
-          scale: isPointer ? 1.5 : 1,
-        }}
-        transition={{
-          type: "spring",
-          mass: 0.1,
-          stiffness: 100,
-          damping: 10,
-          ease: "linear",
-        }}
-        style={{
-          borderColor: isPointer ? 'rgb(126, 34, 206)' : 'rgb(153, 103, 255)', // Purple for light mode and dark mode
-        }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full z-50 pointer-events-none"
-        animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-        }}
-        transition={{
-          type: "spring",
-          mass: 0.05,
-          stiffness: 150,
-          damping: 5,
-          ease: "linear",
-        }}
-        style={{
-          backgroundColor: isPointer ? 'rgb(255, 255, 255)' : 'rgb(126, 34, 206)', // White for light mode and purple for dark mode
-        }}
-      />
-    </>
+    <motion.div
+      className="cursor"
+      style={{
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        zIndex: 9999,
+        pointerEvents: 'none',
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 0.3s ease',
+        willChange: 'transform',
+        transform: `translate(${mousePosition.x - 16}px, ${mousePosition.y - 16}px)`,
+        mixBlendMode: 'difference'
+      }}
+    >
+      {isPointer ? (
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="15" fill="white" />
+        </svg>
+      ) : (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 4L25 16L16 17.3L12 26.7L7 4Z" fill="white" />
+        </svg>
+      )}
+    </motion.div>
   );
 };
 
