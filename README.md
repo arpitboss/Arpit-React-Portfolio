@@ -1,4 +1,4 @@
-# Developer Portfolio
+# AV Portfolio
 
 ## 🚀 Overview
 
@@ -35,12 +35,12 @@ A modern, responsive developer portfolio built with React.js and Tailwind CSS, f
 
 1. Clone the repository
     ```bash
-    git clone https://github.com/yourusername/portfolio.git
+    git clone https://github.com/arpitboss/Arpit-React-Portfolio
     ```
 
 2. Navigate to the project directory
     ```bash
-    cd portfolio
+    cd arpit-portfolio
     ```
 
 3. Install dependencies
@@ -62,28 +62,42 @@ A modern, responsive developer portfolio built with React.js and Tailwind CSS, f
 ## 📋 Project Structure
 
 ```
-portfolio/
+arpit-portfolio/
 ├── public/
-│   ├── assets/
-│   │   ├── images/
-│   │   └── resume.pdf
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   ├── Header/
-│   │   ├── Footer/
-│   │   ├── Hero/
-│   │   ├── Projects/
-│   │   ├── About/
-│   │   ├── Contact/
-│   │   └── UI/
-│   ├── hooks/
-│   ├── context/
-│   ├── data/
-│   ├── styles/
-│   ├── utils/
-│   ├── App.jsx
-│   └── main.jsx
+│   ├── images/
+│   │   ├── EventPro.png
+│   │   ├── SkyVision_Drones.png
+│   │   ├── Smart_Travel_Planner.png
+│   │   ├── Task_Master_Pro.png
+│   │   └── WebChat_Pro.png
+│   └── pdf/
+|       └── Arpit_Resume_Main_Final.pdf
+└── src/
+    ├── assets/
+    ├── components/
+    │   ├── About.jsx
+    │   ├── AnimatedText.jsx
+    │   ├── Contact.jsx
+    │   ├── CustomCursor.jsx
+    │   ├── Experience.jsx
+    │   ├── Footer.jsx
+    │   ├── Hero.jsx
+    │   ├── Navbar.jsx
+    │   ├── ParticlesBackground.jsx
+    │   ├── ProjectCard.jsx
+    │   ├── Projects.jsx
+    │   ├── SectionHeading.jsx
+    │   ├── Skills.jsx
+    │   └── ThemeToggle.jsx
+    ├── context/
+    │   └── ThemeContext.jsx
+    ├── data/
+        ├── projects.js
+        └── skills.js
+    ├── App.jsx
+    ├── index.js
+    ├── index.css
+    └── main.jsx
 ├── .gitignore
 ├── package.json
 ├── README.md
@@ -132,8 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 ## 📱 Contact
 
 - Email: workother001@gmail.com
-- LinkedIn: [linkedin.com/in/yourusername](https://www.linkedin.com/in/arpit-verma-545819226/)
-- GitHub: [github.com/yourusername](https://github.com/arpitboss)
+- LinkedIn: [https://www.linkedin.com/in/arpit-verma-545819226/](https://www.linkedin.com/in/arpit-verma-545819226/)
+- GitHub: [https://github.com/arpitboss](https://github.com/arpitboss)
 
 ## 📄 License
 
