@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
 const socialLinks = [
-    { icon: <FaGithub />, url: "#", label: "GitHub" },
-    { icon: <FaLinkedinIn />, url: "#", label: "LinkedIn" },
-    { icon: <FaTwitter />, url: "#", label: "Twitter" },
-    { icon: <FaEnvelope />, url: "#", label: "Email" }
+    { icon: <FaGithub />, url: "https://github.com/arpitboss", label: "GitHub" },
+    { icon: <FaLinkedinIn />, url: "https://linkedin.com/in/arpit-verma-545819226", label: "LinkedIn" },
+    { icon: <FaTwitter />, url: "https://x.com/ArpitVerma_123", label: "Twitter" },
+    { icon: <FaEnvelope />, url: "workother001@gmail.com", label: "Email" }
 ];
 
 const Footer = () => {

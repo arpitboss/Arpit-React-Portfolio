@@ -22,7 +22,6 @@ const ThemeToggle = () => {
         setIsDark(prev => {
             const newTheme = !prev;
             
-            // Update DOM and localStorage
             if (newTheme) {
                 document.documentElement.classList.add('dark');
                 localStorage.setItem('theme', 'dark');

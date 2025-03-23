@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState, useRef } from 'react';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadFull } from "tsparticles";
 import { useTheme } from 'next-themes';
@@ -6,11 +6,29 @@ import { useTheme } from 'next-themes';
 const ParticlesBackground = () => {
     const { resolvedTheme } = useTheme() || { resolvedTheme: 'light' };
     const isDarkMode = resolvedTheme === 'dark';
+    const [initialParticles, setInitialParticles] = useState(40);
+    const particlesCountRef = useRef(initialParticles);
+    const intervalRef = useRef(null);
 
     useEffect(() => {
         initParticlesEngine(async (engine) => {
             await loadFull(engine);
         });
+
+        intervalRef.current = setInterval(() => {
+            particlesCountRef.current += 1;
+            setInitialParticles(particlesCountRef.current);
+
+            if (particlesCountRef.current >= 80) {
+                clearInterval(intervalRef.current);
+            }
+        }, 45000);
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
     }, []);
 
     const particlesOptions = useMemo(() => {
@@ -87,7 +105,8 @@ const ParticlesBackground = () => {
                         enable: true,
                         area: 800,
                     },
-                    value: 40,
+                    value: initialParticles,
+                    limit: 0,
                 },
                 opacity: {
                     value: isDarkMode ? 0.8 : 0.4,
@@ -132,7 +151,7 @@ const ParticlesBackground = () => {
             },
             detectRetina: true,
         };
-    }, [isDarkMode]);
+    }, [isDarkMode, initialParticles]);
 
     return (
         <div className="absolute inset-0 z-0 overflow-hidden">
