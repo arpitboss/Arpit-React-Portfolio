@@ -1,83 +1,69 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope } from 'react-icons/fa';
-
-const socialLinks = [
-    { icon: <FaGithub />, url: "https://github.com/arpitboss", label: "GitHub" },
-    { icon: <FaLinkedinIn />, url: "https://linkedin.com/in/arpit-verma-545819226", label: "LinkedIn" },
-    { icon: <FaTwitter />, url: "https://x.com/ArpitVerma_123", label: "Twitter" },
-    { icon: <FaEnvelope />, url: "workother001@gmail.com", label: "Email" }
-];
+import { Mail } from 'lucide-react';
+import { FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
-    return (
-        <footer className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white py-12 relative overflow-hidden">
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center max-w-2xl mx-auto">
-                    <motion.h2
-                        className="text-3xl font-bold mb-4 font-display bg-gradient-to-r from-purple-500 to-pink-600 dark:from-purple-400 dark:to-pink-500 bg-clip-text text-transparent"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
-                    >
-                        Arpit Verma
-                    </motion.h2>
-                    <motion.p
-                        className="text-gray-600 dark:text-gray-300 mb-6 font-body"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        viewport={{ once: true }}
-                    >
-                        Frontend Developer
-                    </motion.p>
-
-                    <motion.div
-                        className="flex justify-center space-x-4 mb-8"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        {socialLinks.map((link, index) => (
-                            <motion.a
-                                key={index}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-600 hover:text-white transition-all duration-300"
-                                whileHover={{
-                                    scale: 1.1,
-                                    rotate: 5,
-                                    transition: { duration: 0.3 }
-                                }}
-                                whileTap={{ scale: 0.9 }}
-                                aria-label={link.label}
-                            >
-                                {link.icon}
-                            </motion.a>
-                        ))}
-                    </motion.div>
-
-                    <motion.div
-                        className="border-t border-gray-200 dark:border-gray-800 pt-6 mt-6"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        viewport={{ once: true }}
-                    >
-                        <p className="text-gray-500 dark:text-gray-400 font-body text-sm">
-                            © {new Date().getFullYear()} Arpit Verma. All rights reserved.
-                        </p>
-                    </motion.div>
-                </div>
+  return (
+    <footer className="border-t border-border/60 bg-bg/50 mt-12 pt-16 pb-12">
+      <div className="container-wide">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          {/* Left Column - Brand & Socials */}
+          <div className="max-w-sm">
+            <h3 className="font-sans text-xl font-bold text-heading mb-3">Arpit Verma</h3>
+            <p className="text-body text-sm leading-relaxed mb-6">
+              Software Engineer building clean, scalable backend systems and robust APIs.
+            </p>
+            <div className="flex items-center gap-5">
+              <a href="mailto:contact@arpitverma.me" className="text-muted hover:text-heading transition-colors" aria-label="Email">
+                <Mail size={18} strokeWidth={1.5} />
+              </a>
+              <a href="https://linkedin.com/in/arpit-verma-545819226" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-heading transition-colors" aria-label="LinkedIn">
+                <FaLinkedinIn size={18} />
+              </a>
+              <a href="https://github.com/arpitboss" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-heading transition-colors" aria-label="GitHub">
+                <FaGithub size={18} />
+              </a>
+              <a href="https://x.com/ArpitVerma_123" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-heading transition-colors" aria-label="Twitter">
+                <FaTwitter size={18} />
+              </a>
             </div>
+          </div>
 
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-full blur-3xl"></div>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-full blur-3xl"></div>
-        </footer>
-    );
+          {/* Links Columns */}
+          <div className="flex gap-16 sm:gap-24 md:text-right">
+            <div className="text-left">
+              <h4 className="font-sans font-bold text-heading text-sm mb-5">General</h4>
+              <ul className="space-y-3">
+                <li><a href="#home" className="text-sm text-muted hover:text-heading transition-colors">Home</a></li>
+                <li><a href="#about" className="text-sm text-muted hover:text-heading transition-colors">About</a></li>
+                <li><a href="#experience" className="text-sm text-muted hover:text-heading transition-colors">Experience</a></li>
+                <li><a href="#projects" className="text-sm text-muted hover:text-heading transition-colors">Projects</a></li>
+              </ul>
+            </div>
+            <div className="text-left">
+              <h4 className="font-sans font-bold text-heading text-sm mb-5">Connect</h4>
+              <ul className="space-y-3">
+                <li><a href="mailto:contact@arpitverma.me" className="text-sm text-muted hover:text-heading transition-colors">Email</a></li>
+                <li><a href="https://linkedin.com/in/arpit-verma-545819226" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-heading transition-colors">LinkedIn</a></li>
+                <li><a href="https://github.com/arpitboss" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-heading transition-colors">GitHub</a></li>
+                <li><a href="https://x.com/ArpitVerma_123" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-heading transition-colors">Twitter</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-8 pb-4 border-t border-border/40 flex flex-col-reverse sm:flex-row items-center justify-between gap-6 sm:gap-4 relative">
+          <p className="text-xs text-muted w-full sm:w-auto text-center sm:text-left">
+            Copyright © {new Date().getFullYear()} Arpit Verma. All rights reserved.
+          </p>
+          <div className="relative pr-2">
+            <p className="font-handwrite text-xl md:text-2xl text-muted/80 -rotate-3">
+              Thanks for visiting ✦
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

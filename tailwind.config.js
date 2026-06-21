@@ -1,45 +1,37 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: {
-          light: "#0070f3",
-          dark: "#60a5fa"
+        bg: {
+          DEFAULT: '#FFFFFF',
+          subtle: '#F9FAFB',
+          hover: '#F3F4F6',
         },
-        secondary: "#6c757d",
-        dark: {
-          DEFAULT: "#121212",
-          800: "#1e1e1e",
-          700: "#2d2d2d",
-          600: "#383838",
-        },
-        light: {
-          DEFAULT: "#f8f9fa",
-          200: "#e9ecef",
-          300: "#dee2e6",
-          400: "#ced4da",
-        },
+        heading: '#374151',
+        body: '#6B7280',
+        muted: '#9CA3AF',
+        faint: '#D1D5DB',
+        border: '#E5E7EB',
+        accent: '#FFD9AD',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Poppins', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
-
+        sans: ['Figtree', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        handwrite: ['Caveat', 'cursive'],
       },
-      animation: {
-        'cursor-blink': 'cursor 1s infinite step-end',
+      maxWidth: {
+        prose: '680px',
+        wide: '960px',
       },
-      keyframes: {
-        cursor: {
-          '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0 },
-        }
-      }
+      fontSize: {
+        'h1': ['clamp(40px, 5vw, 64px)', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+        'h2': ['clamp(28px, 3.5vw, 40px)', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'h3': ['clamp(20px, 2.5vw, 28px)', { lineHeight: '1.3' }],
+      },
     },
   },
   plugins: [],

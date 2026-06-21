@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Arpit Verma - Frontend Developer Portfolio" />
-    <title>Arpit Verma | Frontend Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
-<script>
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-</script>
+    <title>Arpit Verma | Software Engineer</title>
+    <meta name="description" content="Arpit Verma | Software Engineer building clean, scalable backend systems and robust APIs." />
+    <meta name="author" content="Arpit Verma" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#FFFFFF" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Arpit Verma | Software Engineer" />
+    <meta property="og:description" content="Software Engineer building clean, scalable backend systems and robust APIs." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arpitverma.me" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Figtree:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Arpit Verma",
+      "url": "https://arpitverma.me",
+      "jobTitle": "Associate Software Engineer",
+      "worksFor": { "@type": "Organization", "name": "MAQ Software" },
+      "sameAs": [
+        "https://github.com/arpitboss",
+        "https://linkedin.com/in/arpit-verma-545819226",
+        "https://x.com/ArpitVerma_123"
+      ]
+    }
+    </script>
   </head>
-  <body class="bg-light dark:bg-dark text-dark dark:text-white transition-colors duration-300">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

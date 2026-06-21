@@ -1,213 +1,171 @@
-import React, { useState } from 'react';
-import { HiCode, HiDeviceMobile, HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const experiences = [
+  {
+    company: 'MAQ Software',
+    role: 'Software Engineer-1',
+    period: 'Aug 2025 - Present',
+    location: 'Greater Noida',
+    logo: '/images/MAQ_Logo.png',
+    current: true,
+    description: [
+      'Contributing to the Origence project, identifying and resolving backend vulnerabilities to improve application security and performance',
+      'Designing and implementing secure, scalable RESTful APIs with proper authentication, authorization, and data validation',
+      'Debugging and resolving critical backend issues, improving system uptime and client satisfaction',
+    ],
+    tech: ['Node.js', 'TypeScript', 'ASP.NET', 'REST APIs'],
+  },
+  {
+    company: 'Hashtek Solutions',
+    role: 'Flutter Developer',
+    period: 'Jul 2024 - Oct 2024',
+    location: 'Remote',
+    logo: '/images/HashTek_Logo.png',
+    current: false,
+    description: [
+      'Designed and developed cross-platform mobile apps for Android and iOS',
+      'Implemented state management with Provider and Bloc patterns',
+      'Integrated Firebase services including Auth, Firestore, and Cloud Functions',
+      'Collaborated closely with designers on responsive, intuitive interfaces',
+    ],
+    tech: ['Flutter', 'Dart', 'Firebase', 'Provider', 'Bloc'],
+  },
+];
+
+const education = {
+  institution: 'Ajay Kumar Garg Engineering College',
+  degree: 'B.Tech in Computer Science and Engineering',
+  period: '2021 - 2025',
+  location: 'Ghaziabad, India',
+};
+
 const Experience = () => {
-    const [expandedExperience, setExpandedExperience] = useState(null);
+  return (
+    <section id="experience" className="section section-border">
+      <div className="container-prose">
+        <motion.h2
+          className="text-h2 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          Experience
+        </motion.h2>
 
-    const experiences = [
-        {
-            id: 1,
-            title: "Associate Software Engineer",
-            company: "MAQ Software",
-            date: "Jan 2025 - Present",
-            description: "Working as a Frontend Developer specializing in building modern web applications and interfaces using cutting-edge technologies.",
-            responsibilities: [
-                "Developing responsive web applications using React.js, TypeScript, and Angular",
-                "Implementing UI components following design specifications and ensuring cross-browser compatibility",
-                "Collaborating with backend developers to integrate RESTful APIs",
-                "Participating in code reviews and implementing best practices for web development",
-                "Working with technologies such as HTML, CSS, JavaScript, TypeScript, React, Angular, and ASP.NET"
-            ],
-            icon: <HiCode className="text-xl" />,
-            color: "from-violet-500 to-purple-500",
-            borderColor: "border-violet-500 dark:border-violet-400",
-            textColor: "text-violet-600 dark:text-violet-300"
-        },
-        {
-            id: 2,
-            title: "Flutter Developer",
-            company: "Hashtek Solutions",
-            date: "July 2024 - Oct 2024",
-            description: "Worked on cross-platform mobile application development using Flutter framework.",
-            responsibilities: [
-                "Designed and developed mobile applications using Flutter for both Android and iOS platforms",
-                "Implemented state management solutions using Provider and Bloc patterns",
-                "Integrated Firebase services including Authentication, Firestore, and Cloud Functions",
-                "Collaborated with UI/UX designers to implement responsive and intuitive user interfaces",
-                "Optimized application performance and fixed bugs to improve user experience"
-            ],
-            icon: <HiDeviceMobile className="text-xl" />,
-            color: "from-blue-500 to-cyan-500",
-            borderColor: "border-blue-500 dark:border-blue-400",
-            textColor: "text-blue-600 dark:text-blue-300"
-        }
-    ];
+        <div className="space-y-12">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col sm:flex-row gap-5"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.08 } },
+              }}
+            >
+              {/* Logo Box */}
+              <motion.div variants={fadeUp} className="shrink-0 mt-1">
+                <div className="w-12 h-12 rounded-xl border border-border bg-white shadow-sm flex items-center justify-center overflow-hidden p-1.5">
+                  <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-contain" />
+                </div>
+              </motion.div>
 
-    const toggleExpand = (id) => {
-        setExpandedExperience(expandedExperience === id ? null : id);
-    };
-
-    return (
-        <section id="experience" className="section bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-24">
-            <div className="container mx-auto px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    className="flex flex-col items-center mb-20"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
-                        Work Experience
-                    </h2>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-violet-600 to-purple-600 dark:from-violet-400 dark:to-purple-400 rounded-full mb-6"></div>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 text-center max-w-2xl">
-                        My professional journey and the skills I've developed along the way.
-                    </p>
+              {/* Content */}
+              <div className="flex-1 pb-10 border-b border-border/60 last:border-0 last:pb-0">
+                <motion.div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-1" variants={fadeUp}>
+                  <div className="flex items-center gap-3">
+                    <h3 className="font-sans text-lg font-bold text-heading">
+                      {exp.company}
+                    </h3>
+                    {exp.current && (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Working
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-sm text-muted whitespace-nowrap hidden sm:block">
+                    {exp.period}
+                  </span>
                 </motion.div>
 
-                <div className="max-w-5xl mx-auto relative">
-                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-1 bg-gray-200 dark:bg-gray-700">
-                        <motion.div
-                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-violet-600 to-purple-600 dark:from-violet-400 dark:to-purple-400"
-                            initial={{ height: "0%" }}
-                            whileInView={{ height: "100%" }}
-                            transition={{ duration: 1.5, ease: "easeOut" }}
-                            viewport={{ once: true, amount: 0.1 }}
-                        />
-                    </div>
+                <motion.div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4" variants={fadeUp}>
+                  <p className="text-body font-medium">{exp.role}</p>
+                  <span className="text-sm text-muted sm:hidden block">{exp.period}</span>
+                  <span className="text-sm text-muted hidden sm:block">{exp.location}</span>
+                </motion.div>
 
-                    <div className="md:hidden absolute left-5 top-0 h-full w-1 bg-gray-200 dark:bg-gray-700">
-                        <motion.div
-                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-violet-600 to-purple-600 dark:from-violet-400 dark:to-purple-400"
-                            initial={{ height: "0%" }}
-                            whileInView={{ height: "100%" }}
-                            transition={{ duration: 1.5, ease: "easeOut" }}
-                            viewport={{ once: true, amount: 0.1 }}
-                        />
-                    </div>
+                {/* Responsibilities */}
+                <motion.ul className="space-y-2 mb-5" variants={fadeUp}>
+                  {exp.description.map((item, i) => (
+                    <li key={i} className="text-body text-[15px] leading-relaxed pl-4 relative before:content-['·'] before:absolute before:left-0 before:text-muted before:font-bold list-none">
+                      {item}
+                    </li>
+                  ))}
+                </motion.ul>
 
-                    {experiences.map((exp, index) => (
-                        <div key={exp.id} className="mb-16 last:mb-0">
-                            <div className={`flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5">
-                                    <motion.div
-                                        className={`w-5 h-5 rounded-full bg-white dark:bg-gray-800 border-4 ${exp.borderColor} z-10`}
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                    />
-                                </div>
+                {/* Tech tags */}
+                <motion.div className="flex flex-wrap gap-2" variants={fadeUp}>
+                  {exp.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs text-muted px-2.5 py-1 rounded-lg border border-border bg-bg-subtle transition-colors duration-200 hover:border-heading/30 hover:text-heading cursor-default shadow-sm"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-                                <div className="md:hidden absolute left-5 transform -translate-x-1/2 w-5 h-5">
-                                    <motion.div
-                                        className={`w-5 h-5 rounded-full bg-white dark:bg-gray-800 border-4 ${exp.borderColor} z-10`}
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                    />
-                                </div>
+        {/* Education */}
+        <motion.div
+          className="mt-20 pt-12 border-t border-border/60"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
+          <motion.h2
+            className="text-h2 mb-8"
+            variants={fadeUp}
+          >
+            Education
+          </motion.h2>
 
-                                <motion.div
-                                    className={`hidden md:block w-1/2 ${index % 2 === 0 ? 'pr-16 text-right' : 'pl-16 text-left'}`}
-                                    initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.1 }}
-                                    viewport={{ once: true, amount: 0.1 }}
-                                >
-                                    <span className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${exp.color} text-white font-medium`}>
-                                        {exp.date}
-                                    </span>
-                                </motion.div>
-
-                                <motion.div
-                                    className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-16' : 'md:pr-16'}`}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.2 }}
-                                    viewport={{ once: true, amount: 0.1 }}
-                                >
-                                    <motion.div
-                                        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
-                                        whileHover={{ y: -5 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <div
-                                            className={`p-6 cursor-pointer border-l-4 ${exp.borderColor}`}
-                                            onClick={() => toggleExpand(exp.id)}
-                                        >
-                                            <div className="flex justify-between items-start">
-                                                <div>
-                                                    <div className="flex items-center">
-                                                        <div className={`mr-3 p-2 rounded-full bg-gradient-to-r ${exp.color}`}>
-                                                            <span className="text-white">
-                                                                {exp.icon}
-                                                            </span>
-                                                        </div>
-                                                        <div>
-                                                            <h3 className="text-xl font-bold text-gray-800 dark:text-white">{exp.title}</h3>
-                                                            <p className={`text-lg font-medium ${exp.textColor}`}>{exp.company}</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="md:hidden mt-3 mb-3">
-                                                        <span className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white text-sm font-medium`}>
-                                                            {exp.date}
-                                                        </span>
-                                                    </div>
-
-                                                    <p className="text-gray-600 dark:text-gray-300 mt-3">
-                                                        {exp.description}
-                                                    </p>
-                                                </div>
-                                                <div className="ml-3 text-gray-500 dark:text-gray-400">
-                                                    {expandedExperience === exp.id ?
-                                                        <HiChevronUp className="text-xl" /> :
-                                                        <HiChevronDown className="text-xl" />
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <motion.div
-                                            initial={false}
-                                            animate={{
-                                                height: expandedExperience === exp.id ? "auto" : 0,
-                                                opacity: expandedExperience === exp.id ? 1 : 0
-                                            }}
-                                            transition={{ duration: 0.3 }}
-                                            className="overflow-hidden"
-                                        >
-                                            <div className="p-6 pt-0 border-t border-gray-100 dark:border-gray-700">
-                                                <h4 className="font-bold text-gray-800 dark:text-white mb-3">Key Responsibilities</h4>
-                                                <ul className="space-y-3">
-                                                    {exp.responsibilities.map((item, i) => (
-                                                        <motion.li
-                                                            key={i}
-                                                            initial={{ opacity: 0, x: -20 }}
-                                                            animate={expandedExperience === exp.id ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                                                            transition={{ duration: 0.3, delay: i * 0.1 }}
-                                                            className="flex items-start"
-                                                        >
-                                                            <div className={`mr-3 mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r ${exp.color}`}></div>
-                                                            <span className="text-gray-600 dark:text-gray-300">{item}</span>
-                                                        </motion.li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </motion.div>
-                                    </motion.div>
-                                </motion.div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+          <motion.div variants={fadeUp}>
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+              <h3 className="font-sans text-lg font-bold text-heading">
+                {education.institution}
+              </h3>
+              <span className="text-sm text-muted whitespace-nowrap">
+                {education.period}
+              </span>
             </div>
-        </section>
-    );
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <p className="text-body font-medium">{education.degree}</p>
+              <span className="text-sm text-muted">{education.location}</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default Experience;
