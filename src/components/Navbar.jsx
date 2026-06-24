@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cat } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -18,11 +17,10 @@ const Navbar = () => {
         {/* Logo / Wordmark */}
         <a
           href="#"
-          className="flex items-center gap-2 font-display text-xl md:text-2xl text-heading tracking-tight"
+          className="font-display text-xl md:text-2xl text-heading tracking-tight"
           id="nav-logo"
         >
           arpit verma
-          <Cat className="w-5 h-5 text-heading/80 hover:text-heading transition-colors" strokeWidth={1.5} />
         </a>
 
         {/* Desktop links */}

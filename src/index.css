@@ -11,13 +11,12 @@
     font-family: theme('fontFamily.sans');
     color: theme('colors.heading');
     background-color: theme('colors.bg.DEFAULT');
-    background-image: radial-gradient(circle at center, #E5E7EB 1.5px, transparent 1.5px);
-    background-size: 32px 32px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
     line-height: 1.6;
   }
+
 
   h1, h2, h3, h4, h5, h6 {
     font-family: theme('fontFamily.display');
@@ -71,7 +70,13 @@
   }
 
   .section-border {
-    @apply border-t border-border;
+    @apply relative;
+  }
+
+  .section-border::before {
+    content: "";
+    @apply absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-wide h-px;
+    background: linear-gradient(90deg, transparent 0%, theme('colors.border') 20%, theme('colors.border') 80%, transparent 100%);
   }
 
   .link-underline {

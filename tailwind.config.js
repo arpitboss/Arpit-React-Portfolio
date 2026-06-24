@@ -32,6 +32,16 @@ export default {
         'h2': ['clamp(28px, 3.5vw, 40px)', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
         'h3': ['clamp(20px, 2.5vw, 28px)', { lineHeight: '1.3' }],
       },
+      keyframes: {
+        'cell-ripple': {
+          '0%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
+          '100%': { opacity: '0.4' },
+        },
+      },
+      animation: {
+        'cell-ripple': 'cell-ripple var(--duration, 200ms) ease-out var(--delay, 0ms) none 1',
+      },
     },
   },
   plugins: [],
