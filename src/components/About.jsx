@@ -14,7 +14,7 @@ const About = () => {
     <section id="about" className="section section-border">
       <div className="container-prose">
         <motion.h2
-          className="text-h2 mb-8"
+          className="text-h2 mb-8 dark:text-dark-heading"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -32,14 +32,14 @@ const About = () => {
             visible: { transition: { staggerChildren: 0.1 } },
           }}
         >
-          <motion.p className="leading-relaxed" variants={fadeUp}>
+          <motion.p className="leading-relaxed text-body dark:text-dark-body" variants={fadeUp}>
             I'm a software engineer who enjoys working across the full stack - from designing 
             secure APIs and asynchronous job pipelines to building interfaces that feel fast and 
             intentional. I care about writing code that's easy to read, easy to change, and does 
             exactly what it should.
           </motion.p>
 
-          <motion.p className="leading-relaxed" variants={fadeUp}>
+          <motion.p className="leading-relaxed text-body dark:text-dark-body" variants={fadeUp}>
             Currently at MAQ Software, I work on the Origence project - identifying backend 
             vulnerabilities, building scalable RESTful APIs, and debugging the kind of issues 
             that keep systems running reliably. Before that, I studied Computer Science at 
@@ -47,7 +47,7 @@ const About = () => {
             side projects and competing on LeetCode and CodeChef.
           </motion.p>
 
-          <motion.p className="leading-relaxed" variants={fadeUp}>
+          <motion.p className="leading-relaxed text-body dark:text-dark-body" variants={fadeUp}>
             My recent work includes an AI-powered content repurposing platform (RabbitMQ, 
             Gemini API, WebSockets), a multiplayer drawing game built with Flutter and Socket.io, 
             and a pet adoption app with offline-first architecture. I like problems that sit at 

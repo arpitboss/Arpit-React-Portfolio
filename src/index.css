@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  /* ─── Prevent flash of wrong theme ─── */
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
@@ -15,8 +21,13 @@
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  .dark body {
+    color: #F1F3F8;
+    background-color: #0F1117;
+  }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: theme('fontFamily.display');
@@ -24,10 +35,20 @@
     line-height: 1.2;
     letter-spacing: -0.03em;
     font-weight: 700;
+    transition: color 0.3s ease;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #F1F3F8;
   }
 
   p, li, span {
     color: theme('colors.body');
+    transition: color 0.3s ease;
+  }
+
+  .dark p, .dark li, .dark span {
+    color: #A1A8B8;
   }
 
   a {
@@ -40,9 +61,18 @@
     color: #222;
   }
 
+  .dark ::selection {
+    background-color: #FFD9AD40;
+    color: #F1F3F8;
+  }
+
   :focus-visible {
     outline: 2px solid theme('colors.heading');
     outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline-color: #F1F3F8;
   }
 
   /* Respect reduced motion */
@@ -77,6 +107,11 @@
     content: "";
     @apply absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-wide h-px;
     background: linear-gradient(90deg, transparent 0%, theme('colors.border') 20%, theme('colors.border') 80%, transparent 100%);
+    transition: background 0.3s ease;
+  }
+
+  .dark .section-border::before {
+    background: linear-gradient(90deg, transparent 0%, #252836 20%, #252836 80%, transparent 100%);
   }
 
   .link-underline {
@@ -88,7 +123,51 @@
     @apply absolute bottom-0 left-0 w-0 h-px bg-heading transition-all duration-300;
   }
 
+  .dark .link-underline::after {
+    background-color: #F1F3F8;
+  }
+
   .link-underline:hover::after {
     @apply w-full;
+  }
+
+  /* ─── Dark Mode Toggle Button ─── */
+  .theme-toggle {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid theme('colors.border');
+    background: theme('colors.bg.DEFAULT');
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: theme('colors.body');
+  }
+
+  .theme-toggle:hover {
+    border-color: theme('colors.muted');
+    background: theme('colors.bg.subtle');
+    color: theme('colors.heading');
+  }
+
+  .dark .theme-toggle {
+    border-color: #2A2D38;
+    background: #181B25;
+    color: #A1A8B8;
+  }
+
+  .dark .theme-toggle:hover {
+    border-color: #3A3E4A;
+    background: #1E2130;
+    color: #F1F3F8;
+  }
+
+  /* ─── Tech Tag Color System ─── */
+  .tech-tag {
+    @apply text-xs font-medium px-2.5 py-1 rounded-lg border transition-colors duration-200 cursor-default;
   }
 }

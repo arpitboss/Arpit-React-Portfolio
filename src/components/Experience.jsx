@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import TechTag from './TechTag';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
@@ -53,7 +54,7 @@ const Experience = () => {
     <section id="experience" className="section section-border">
       <div className="container-prose">
         <motion.h2
-          className="text-h2 mb-12"
+          className="text-h2 mb-12 dark:text-dark-heading"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -76,40 +77,40 @@ const Experience = () => {
             >
               {/* Logo Box */}
               <motion.div variants={fadeUp} className="shrink-0 mt-1">
-                <div className="w-12 h-12 rounded-xl border border-border bg-white shadow-sm flex items-center justify-center overflow-hidden p-1.5">
+                <div className="w-12 h-12 rounded-xl border border-border dark:border-dark-border bg-white dark:bg-dark-bg-subtle shadow-sm flex items-center justify-center overflow-hidden p-1.5">
                   <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-contain" />
                 </div>
               </motion.div>
 
               {/* Content */}
-              <div className="flex-1 pb-10 border-b border-border/60 last:border-0 last:pb-0">
+              <div className="flex-1 pb-10 border-b border-border/60 dark:border-dark-border/60 last:border-0 last:pb-0">
                 <motion.div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-1" variants={fadeUp}>
                   <div className="flex items-center gap-3">
-                    <h3 className="font-sans text-lg font-bold text-heading">
+                    <h3 className="font-sans text-lg font-bold text-heading dark:text-dark-heading">
                       {exp.company}
                     </h3>
                     {exp.current && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-700/40">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         Working
                       </span>
                     )}
                   </div>
-                  <span className="text-sm text-muted whitespace-nowrap hidden sm:block">
+                  <span className="text-sm text-muted dark:text-dark-muted whitespace-nowrap hidden sm:block">
                     {exp.period}
                   </span>
                 </motion.div>
 
                 <motion.div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4" variants={fadeUp}>
-                  <p className="text-body font-medium">{exp.role}</p>
-                  <span className="text-sm text-muted sm:hidden block">{exp.period}</span>
-                  <span className="text-sm text-muted hidden sm:block">{exp.location}</span>
+                  <p className="text-body dark:text-dark-body font-medium">{exp.role}</p>
+                  <span className="text-sm text-muted dark:text-dark-muted sm:hidden block">{exp.period}</span>
+                  <span className="text-sm text-muted dark:text-dark-muted hidden sm:block">{exp.location}</span>
                 </motion.div>
 
                 {/* Responsibilities */}
                 <motion.ul className="space-y-2 mb-5" variants={fadeUp}>
                   {exp.description.map((item, i) => (
-                    <li key={i} className="text-body text-[15px] leading-relaxed pl-4 relative before:content-['·'] before:absolute before:left-0 before:text-muted before:font-bold list-none">
+                    <li key={i} className="text-body dark:text-dark-body text-[15px] leading-relaxed pl-4 relative before:content-['·'] before:absolute before:left-0 before:text-muted dark:before:text-dark-muted before:font-bold list-none">
                       {item}
                     </li>
                   ))}
@@ -118,12 +119,7 @@ const Experience = () => {
                 {/* Tech tags */}
                 <motion.div className="flex flex-wrap gap-2" variants={fadeUp}>
                   {exp.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs text-muted px-2.5 py-1 rounded-lg border border-border bg-bg-subtle transition-colors duration-200 hover:border-heading/30 hover:text-heading cursor-default shadow-sm"
-                    >
-                      {t}
-                    </span>
+                    <TechTag key={t} name={t} />
                   ))}
                 </motion.div>
               </div>
@@ -133,7 +129,7 @@ const Experience = () => {
 
         {/* Education */}
         <motion.div
-          className="mt-20 pt-12 border-t border-border/60"
+          className="mt-20 pt-12 border-t border-border/60 dark:border-dark-border/60"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -142,7 +138,7 @@ const Experience = () => {
           }}
         >
           <motion.h2
-            className="text-h2 mb-8"
+            className="text-h2 mb-8 dark:text-dark-heading"
             variants={fadeUp}
           >
             Education
@@ -150,16 +146,16 @@ const Experience = () => {
 
           <motion.div variants={fadeUp}>
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
-              <h3 className="font-sans text-lg font-bold text-heading">
+              <h3 className="font-sans text-lg font-bold text-heading dark:text-dark-heading">
                 {education.institution}
               </h3>
-              <span className="text-sm text-muted whitespace-nowrap">
+              <span className="text-sm text-muted dark:text-dark-muted whitespace-nowrap">
                 {education.period}
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-              <p className="text-body font-medium">{education.degree}</p>
-              <span className="text-sm text-muted">{education.location}</span>
+              <p className="text-body dark:text-dark-body font-medium">{education.degree}</p>
+              <span className="text-sm text-muted dark:text-dark-muted">{education.location}</span>
             </div>
           </motion.div>
         </motion.div>

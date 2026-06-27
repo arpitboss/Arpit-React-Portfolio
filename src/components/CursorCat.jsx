@@ -74,7 +74,7 @@ const CursorCat = () => {
           rotate: { duration: 0.2 },
           scaleX: { duration: 0 }
         }}
-        className="text-heading/80"
+        className="text-heading/80 dark:text-dark-heading/80"
       >
         <Cat size={28} strokeWidth={1.5} />
       </motion.div>

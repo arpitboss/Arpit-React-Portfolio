@@ -29,7 +29,7 @@ const Hero = () => {
     <section id="home" className="container-prose pt-16 pb-24 md:pt-24 md:pb-32">
       <div className="max-w-xl">
         <motion.h1
-          className="text-h1 font-display font-bold text-heading tracking-tight mb-4"
+          className="text-h1 font-display font-bold text-heading dark:text-dark-heading tracking-tight mb-4"
           custom={0}
           initial="hidden"
           animate="visible"
@@ -39,35 +39,35 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className="text-lg md:text-xl text-body mb-4"
+          className="text-lg md:text-xl text-body dark:text-dark-body mb-4"
           custom={1}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
         >
           Software Engineer at{' '}
-          <span className="text-heading font-medium">MAQ Software</span>
+          <span className="text-heading dark:text-dark-heading font-medium">MAQ Software</span>
         </motion.p>
 
         <motion.div
-          className="flex flex-wrap items-center gap-3 text-sm text-muted mb-8"
+          className="flex flex-wrap items-center gap-3 text-sm text-muted dark:text-dark-muted mb-8"
           custom={2}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
         >
-          <span className="flex items-center gap-1.5 bg-bg-subtle border border-border px-3 py-1.5 rounded-full text-heading shadow-sm">
-            <MapPin size={14} className="text-muted" /> Greater Noida, India
+          <span className="flex items-center gap-1.5 bg-bg-subtle dark:bg-dark-bg-subtle border border-border dark:border-dark-border px-3 py-1.5 rounded-full text-heading dark:text-dark-heading shadow-sm">
+            <MapPin size={14} className="text-muted dark:text-dark-muted" /> Greater Noida, India
           </span>
           {time && (
-            <span className="flex items-center gap-1.5 text-muted">
+            <span className="flex items-center gap-1.5 text-muted dark:text-dark-muted">
               <Clock size={14} /> {time}
             </span>
           )}
         </motion.div>
 
         <motion.p
-          className="text-body leading-relaxed mb-10 max-w-md"
+          className="text-body dark:text-dark-body leading-relaxed mb-10 max-w-md"
           custom={3}
           initial="hidden"
           animate="visible"
@@ -86,7 +86,7 @@ const Hero = () => {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-heading text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-heading dark:bg-dark-heading text-white dark:text-dark-bg text-sm font-medium rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 shadow-sm"
             id="hero-cta-contact"
           >
             <Send size={16} /> Get in touch
@@ -94,10 +94,10 @@ const Hero = () => {
           <a
             href="/pdf/Arpit_Resume__Main.pdf"
             download
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-bg border border-border text-heading text-sm font-medium rounded-xl hover:bg-bg-subtle transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-bg dark:bg-dark-bg-subtle border border-border dark:border-dark-border text-heading dark:text-dark-heading text-sm font-medium rounded-xl hover:bg-bg-subtle dark:hover:bg-dark-bg-hover transition-colors duration-200 shadow-sm"
             id="hero-cta-resume"
           >
-            <FileText size={16} className="text-muted" /> Resume
+            <FileText size={16} className="text-muted dark:text-dark-muted" /> Resume
           </a>
         </motion.div>
 
@@ -113,7 +113,7 @@ const Hero = () => {
             href="https://github.com/arpitboss"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-heading transition-colors duration-200"
+            className="text-muted dark:text-dark-muted hover:text-heading dark:hover:text-dark-heading transition-colors duration-200"
             aria-label="GitHub"
             id="hero-social-github"
           >
@@ -123,7 +123,7 @@ const Hero = () => {
             href="https://linkedin.com/in/arpit-verma-545819226"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-heading transition-colors duration-200"
+            className="text-muted dark:text-dark-muted hover:text-heading dark:hover:text-dark-heading transition-colors duration-200"
             aria-label="LinkedIn"
             id="hero-social-linkedin"
           >
@@ -133,7 +133,7 @@ const Hero = () => {
             href="https://x.com/ArpitVerma_123"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-heading transition-colors duration-200"
+            className="text-muted dark:text-dark-muted hover:text-heading dark:hover:text-dark-heading transition-colors duration-200"
             aria-label="Twitter"
             id="hero-social-twitter"
           >

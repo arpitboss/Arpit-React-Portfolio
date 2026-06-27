@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import TechTag from './TechTag';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
@@ -38,7 +39,7 @@ const Projects = () => {
     <section id="projects" className="section section-border">
       <div className="container-prose text-center mb-16">
         <motion.h2
-          className="text-h1 font-bold tracking-tight text-heading mb-4"
+          className="text-h1 font-bold tracking-tight text-heading dark:text-dark-heading mb-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -47,7 +48,7 @@ const Projects = () => {
           Projects
         </motion.h2>
         <motion.p 
-          className="text-body text-lg"
+          className="text-body dark:text-dark-body text-lg"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -74,7 +75,7 @@ const Projects = () => {
                 variants={fadeUp}
                 id={`project-${index}`}
               >
-                <div className={`w-full md:w-1/2 relative rounded-[2rem] overflow-hidden bg-bg-subtle border border-border shadow-sm group-hover:shadow-md group-hover:border-heading/20 transition-all duration-300 aspect-[4/3] sm:aspect-video ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                <div className={`w-full md:w-1/2 relative rounded-[2rem] overflow-hidden bg-bg-subtle dark:bg-dark-bg-subtle border border-border dark:border-dark-border shadow-sm group-hover:shadow-md group-hover:border-heading/20 dark:group-hover:border-dark-heading/20 transition-all duration-300 aspect-[4/3] sm:aspect-video ${isEven ? 'md:order-1' : 'md:order-2'}`}>
                   <img 
                     src={project.image} 
                     alt={project.title} 
@@ -83,17 +84,15 @@ const Projects = () => {
                 </div>
 
                 <div className={`w-full md:w-1/2 flex flex-col text-center md:text-left px-4 md:px-0 ${isEven ? 'md:order-2' : 'md:order-1'}`}>
-                  <h3 className="font-sans text-2xl md:text-3xl font-bold text-heading mb-4 group-hover:text-gray-900 transition-colors duration-200">
+                  <h3 className="font-sans text-2xl md:text-3xl font-bold text-heading dark:text-dark-heading mb-4 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <p className="text-body text-base md:text-lg leading-relaxed mb-6">
+                  <p className="text-body dark:text-dark-body text-base md:text-lg leading-relaxed mb-6">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="text-xs font-medium text-muted px-3 py-1.5 rounded-full border border-border bg-bg-subtle">
-                        {t}
-                      </span>
+                      <TechTag key={t} name={t} variant="pill" />
                     ))}
                   </div>
                 </div>
@@ -113,7 +112,7 @@ const Projects = () => {
             href="https://github.com/arpitboss"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-heading text-white text-sm font-medium rounded-xl hover:bg-gray-800 transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-heading dark:bg-dark-heading text-white dark:text-dark-bg text-sm font-medium rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 shadow-sm"
             id="projects-github-link"
           >
             View more on GitHub

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -17,19 +18,19 @@ const Navbar = () => {
         {/* Logo / Wordmark */}
         <a
           href="#"
-          className="font-display text-xl md:text-2xl text-heading tracking-tight"
+          className="font-display text-xl md:text-2xl text-heading dark:text-dark-heading tracking-tight"
           id="nav-logo"
         >
           arpit verma
         </a>
 
-        {/* Desktop links */}
+        {/* Desktop links + toggle */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-body hover:text-heading transition-colors duration-200 link-underline"
+              className="text-sm text-body dark:text-dark-body hover:text-heading dark:hover:text-dark-heading transition-colors duration-200 link-underline"
               id={`nav-${link.label.toLowerCase()}`}
             >
               {link.label}
@@ -38,35 +39,39 @@ const Navbar = () => {
           <a
             href="/pdf/Arpit_Resume__Main.pdf"
             download
-            className="text-sm text-body hover:text-heading transition-colors duration-200 link-underline"
+            className="text-sm text-body dark:text-dark-body hover:text-heading dark:hover:text-dark-heading transition-colors duration-200 link-underline"
             id="nav-resume"
           >
             Resume
           </a>
+          <ThemeToggle />
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-heading"
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={isOpen}
-          id="nav-mobile-toggle"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-            {isOpen ? (
-              <>
-                <line x1="6" y1="6" x2="18" y2="18" />
-                <line x1="6" y1="18" x2="18" y2="6" />
-              </>
-            ) : (
-              <>
-                <line x1="4" y1="7" x2="20" y2="7" />
-                <line x1="4" y1="17" x2="20" y2="17" />
-              </>
-            )}
-          </svg>
-        </button>
+        {/* Mobile: toggle + hamburger */}
+        <div className="flex md:hidden items-center gap-3">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-heading dark:text-dark-heading"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            id="nav-mobile-toggle"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              {isOpen ? (
+                <>
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                </>
+              ) : (
+                <>
+                  <line x1="4" y1="7" x2="20" y2="7" />
+                  <line x1="4" y1="17" x2="20" y2="17" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -85,7 +90,7 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-body hover:text-heading transition-colors duration-200 py-1"
+                  className="text-body dark:text-dark-body hover:text-heading dark:hover:text-dark-heading transition-colors duration-200 py-1"
                 >
                   {link.label}
                 </a>
@@ -94,7 +99,7 @@ const Navbar = () => {
                 href="/pdf/Arpit_Resume__Main.pdf"
                 download
                 onClick={() => setIsOpen(false)}
-                className="text-body hover:text-heading transition-colors duration-200 py-1"
+                className="text-body dark:text-dark-body hover:text-heading dark:hover:text-dark-heading transition-colors duration-200 py-1"
               >
                 Resume
               </a>
